@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:in_app_purchase/in_app_purchase.dart';
+// import 'package:in_app_purchase/in_app_purchase.dart';
 import 'package:inapp_purchase_test/providermodel.dart';
 import 'package:provider/provider.dart';
 import 'package:in_app_purchase_android/in_app_purchase_android.dart';
@@ -22,7 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  InAppPurchase _iap = InAppPurchase.instance;
+  // InAppPurchase _iap = InAppPurchase.instance;
 
   @override
   void initState() {
