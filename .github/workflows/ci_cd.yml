@@ -35,7 +35,7 @@ jobs:
     - name: Prepare Secret Files
       run: |
         echo "${{ secrets.KEYSTORE }}" > key.jks.asc
-        gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch key.jks.asc > app/key.jks
+        gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch key.jks.asc > key.jks
         
         
         # echo "${{ secrets.KEYSTORE_PROPERTIES }}" > key.properties.asc
