@@ -129,10 +129,10 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  _buyProduct(ProductDetails prod) {
-    final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
-    _iap.buyConsumable(purchaseParam: purchaseParam);
-  }
+  // _buyProduct(ProductDetails prod) {
+  //   final PurchaseParam purchaseParam = PurchaseParam(productDetails: prod);
+  //   _iap.buyConsumable(purchaseParam: purchaseParam);
+  // }
 }
 
 class MyHomePage extends StatefulWidget {
