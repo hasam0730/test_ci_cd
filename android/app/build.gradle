@@ -51,7 +51,7 @@ android {
         applicationId "com.inapp_purchase_test"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 5
+        versionCode 6
         versionName "5.2" 
     }
 

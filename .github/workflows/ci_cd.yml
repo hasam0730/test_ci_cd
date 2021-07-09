@@ -36,8 +36,7 @@ jobs:
       run: |
         echo "${{ secrets.KEYSTORE }}" > key.jks.asc
         gpg -d --passphrase "${{ secrets.KEYSTORE_PASSPHRASE }}" --batch key.jks.asc > key.jks
-        
-        # echo "${{ secrets.KEYSTORE_PROPERTIES }}" > key.properties.asc
-        # gpg -d --passphrase "${{ secrets.KEYSTORE_PROPERTIES_PASSPHRASE }}" --batch keystore.properties.asc > keystore.properties   
+        echo "${{ secrets.KEYSTORE_PROPERTIES }}" > key.properties.asc
+        gpg -d --passphrase "${{ secrets.KEYSTORE_PROPERTIES_PASSPHRASE }}" --batch key.properties.asc > key.properties   
         # echo "${{ secrets.AGCONNECT_SERVICES }}" > agconnect-services.json.asc    
         # gpg -d --passphrase "${{ secrets.AGCONNECT_SERVICES_PASSPHRASE }}" --batch agconnect-services.json.asc > app/agconnect-services.json
