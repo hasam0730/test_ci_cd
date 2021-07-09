@@ -111,11 +111,11 @@ class _MyAppState extends State<MyApp> {
                                   ),
                                   textAlign: TextAlign.center,
                                 ),
-                                FlatButton(
-                                  onPressed: () => _buyProduct(prod),
-                                  child: Text('Pay'),
-                                  color: Colors.green,
-                                )
+                                // FlatButton(
+                                //   onPressed: () => _buyProduct(prod),
+                                //   child: Text('Pay'),
+                                //   color: Colors.green,
+                                // )
                               ],
                             ),
                           )
