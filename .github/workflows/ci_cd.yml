@@ -42,8 +42,10 @@ jobs:
         # echo "${{ secrets.AGCONNECT_SERVICES }}" > agconnect-services.json.asc    
         # gpg -d --passphrase "${{ secrets.AGCONNECT_SERVICES_PASSPHRASE }}" --batch agconnect-services.json.asc > app/agconnect-services.json    
     
-    - name: Build APK
-      run: flutter build appbundle
+    - name: Build with Gradle    
+      run: |    
+        chmod +x gradlew    
+        ./gradlew assembleRelease
     
     - name: Upload APK artifact 
       uses: actions/upload-artifact@v1
