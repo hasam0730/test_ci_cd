@@ -40,4 +40,15 @@ jobs:
         gpg -d --passphrase "${{ secrets.KEYSTORE_PROPERTIES_PASSPHRASE }}" --batch key.properties.asc > key.properties   
         
         # echo "${{ secrets.AGCONNECT_SERVICES }}" > agconnect-services.json.asc    
-        # gpg -d --passphrase "${{ secrets.AGCONNECT_SERVICES_PASSPHRASE }}" --batch agconnect-services.json.asc > app/agconnect-services.json
+        # gpg -d --passphrase "${{ secrets.AGCONNECT_SERVICES_PASSPHRASE }}" --batch agconnect-services.json.asc > app/agconnect-services.json    
+    
+    - name: Build with Gradle    
+      run: |    
+        chmod +x gradlew    
+        ./gradlew assembleRelease   
+
+    - name: Publish APK   
+      uses: actions/upload-artifact@v2   
+      with:   
+        name: app-release   
+        path: app/build/outputs/apk/release/
