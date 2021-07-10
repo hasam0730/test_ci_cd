@@ -51,8 +51,6 @@ android {
         applicationId "com.inapp_purchase_test"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 7
-        versionName "7.1" 
     }
 
     signingConfigs {
