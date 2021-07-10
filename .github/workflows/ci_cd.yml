@@ -60,7 +60,7 @@ jobs:
       with:
         serviceAccountJsonPlainText: ${{ secrets.FS_ANDROID_SERVICE_ACCOUNT_JSON }}
         packageName: com.inapp_purchase_test
-        path: build/app/outputs/bundle/release/app-release.aab
+        releaseFile: build/app/outputs/bundle/release/app-release.aab
         releaseFiles: build/app/outputs/bundle/release/*.aab
         track: alpha
         inAppUpdatePriority: 2
