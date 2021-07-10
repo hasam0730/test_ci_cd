@@ -62,7 +62,7 @@ jobs:
         packageName: com.inapp_purchase_test
         path: build/app/outputs/bundle/release/app-release.aab
         releaseFiles: build/app/outputs/bundle/release/*.aab
-        track: Alpha
+        track: alpha
         inAppUpdatePriority: 2
         userFraction: 0.33
         # whatsNewDirectory: distribution/whatsnew
