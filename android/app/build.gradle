@@ -36,6 +36,10 @@ def getTimestamp() {
     return date.format('yyyyMMdd.HHmm')
 }
 
+def versionCodeDate() {
+    return new Date().format("yyMMddHHmm").toInteger()
+}
+
 android {
     compileSdkVersion 30
 
@@ -57,7 +61,7 @@ android {
         applicationId "com.inapp_purchase_test"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode getTimestamp()
+        versionCode versionCodeDate()
         versionName "7.1" 
     }
 
