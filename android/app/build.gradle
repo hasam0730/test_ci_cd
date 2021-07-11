@@ -37,7 +37,8 @@ def getTimestamp() {
 }
 
 def versionCodeDate() {
-    return new Date().format("yyMMddHHmm").toInteger()
+    Date date = new Date(); 
+    return date.format("yyyy").toInteger()+date.format("MM").toInteger()+date.format("dd").toInteger()+date.format("HH").toInteger()+date.format("mm").toInteger();
 }
 
 android {
