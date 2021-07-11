@@ -45,13 +45,6 @@ android {
         versionProps['VERSION_CODE']=code.toString()
         versionProps.store(versionPropsFile.newWriter(), null)
 
-        defaultConfig {
-            versionCode code
-            versionName "1.1"
-            minSdkVersion 14
-            targetSdkVersion 18
-        }
-
         compileOptions {
             sourceCompatibility JavaVersion.VERSION_1_8
             targetCompatibility JavaVersion.VERSION_1_8
@@ -70,7 +63,7 @@ android {
             applicationId "com.inapp_purchase_test"
             minSdkVersion 16
             targetSdkVersion 30
-            versionCode 8
+            versionCode code
             versionName "7.1" 
         }
 
