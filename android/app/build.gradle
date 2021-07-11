@@ -51,52 +51,54 @@ android {
             minSdkVersion 14
             targetSdkVersion 18
         }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+
+        sourceSets {
+            main.java.srcDirs += 'src/main/kotlin'
+        }
+
+        defaultConfig {
+            // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+            applicationId "com.inapp_purchase_test"
+            minSdkVersion 16
+            targetSdkVersion 30
+            versionCode 8
+            versionName "7.1" 
+        }
+
+        signingConfigs {
+            release {
+                // keyAlias keystoreProperties['keyAlias']
+                // keyPassword keystoreProperties['keyPassword']
+                // storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+                // storePassword keystoreProperties['storePassword']
+
+                storeFile file(keystoreProperties['storeFile'])
+                storePassword keystoreProperties['storePassword']
+                keyAlias keystoreProperties['keyAlias']
+                keyPassword keystoreProperties['keyPassword']
+                v2SigningEnabled true
+            }
+        }
+        buildTypes {
+            release {
+            signingConfig signingConfigs.release
+            }
+        }
     }
     else {
         throw new GradleException("Could not read version.properties!")
     }
 
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-
-    sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
-    }
-
-    defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.inapp_purchase_test"
-        minSdkVersion 16
-        targetSdkVersion 30
-        versionCode 8
-        versionName "7.1" 
-    }
-
-    signingConfigs {
-        release {
-            // keyAlias keystoreProperties['keyAlias']
-            // keyPassword keystoreProperties['keyPassword']
-            // storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            // storePassword keystoreProperties['storePassword']
-
-            storeFile file(keystoreProperties['storeFile'])
-            storePassword keystoreProperties['storePassword']
-            keyAlias keystoreProperties['keyAlias']
-            keyPassword keystoreProperties['keyPassword']
-            v2SigningEnabled true
-        }
-    }
-    buildTypes {
-        release {
-           signingConfig signingConfigs.release
-        }
-    }
+    
 }
 
 flutter {
