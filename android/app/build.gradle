@@ -33,6 +33,29 @@ if (keystorePropertiesFile.exists()) {
 android {
     compileSdkVersion 30
 
+    def versionPropsFile = file('version.properties')
+
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+
+        versionProps.load(new FileInputStream(versionPropsFile))
+
+        def code = versionProps['VERSION_CODE'].toInteger() + 1
+
+        versionProps['VERSION_CODE']=code.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        defaultConfig {
+            versionCode code
+            versionName "1.1"
+            minSdkVersion 14
+            targetSdkVersion 18
+        }
+    }
+    else {
+        throw new GradleException("Could not read version.properties!")
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
