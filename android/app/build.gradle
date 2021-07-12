@@ -31,10 +31,15 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-def versionCode() {
+def getTimestamp() {
+    def date = new Date()
+    return date.format('yyyyMMdd.HHmm')
+}
+
+def versionCodeDate() {
     Date date = new Date(); 
-    long value = date.getTime();
-    return "$value".toList().collect { it as Integer }.sum();
+    // return date.format("yyyy").toInteger()+date.format("MM").toInteger()+date.format("dd").toInteger()+date.format("HH").toInteger()+date.format("mm").toInteger();
+    return (date.format("yyyy").toInteger()*100)+(date.format("MM").toInteger()*10)+(date.format("dd").toInteger())+date.format("HH").toInteger()*100+date.format("mm").toInteger()*10+date.format("ss").toInteger();
 }
 
 android {
@@ -58,8 +63,8 @@ android {
         applicationId "com.inapp_purchase_test"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode versionCode()
-        versionName "7.2" 
+        versionCode versionCodeDate()
+        versionName "7.1" 
     }
 
     signingConfigs {
