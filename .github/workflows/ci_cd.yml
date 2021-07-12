@@ -27,9 +27,19 @@ jobs:
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       with:
-          status: ${{ job.status }}
-          steps: ${{ toJson(steps) }}
-          
+          status: starting
+      if: always()
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Variables
+      id: vars
+      run: echo "::set-output name=SHORT_COMMIT_ID::$(git rev-parse --short HEAD)"
+      
+    - uses: act10ns/slack@v1
+      with:
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+      if: always()
 
 
     # - name: Slack Notify Build
