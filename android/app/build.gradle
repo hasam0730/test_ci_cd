@@ -31,14 +31,8 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-def getTimestamp() {
-    def date = new Date()
-    return date.format('yyyyMMdd.HHmm')
-}
-
-def versionCodeDate() {
+def calculateVersionCode() {
     Date date = new Date(); 
-    // return date.format("yyyy").toInteger()+date.format("MM").toInteger()+date.format("dd").toInteger()+date.format("HH").toInteger()+date.format("mm").toInteger();
     return (date.format("yyyy").toInteger()*100)+(date.format("MM").toInteger()*10)+(date.format("dd").toInteger())+date.format("HH").toInteger()*100+date.format("mm").toInteger()*10+date.format("ss").toInteger();
 }
 
@@ -63,17 +57,12 @@ android {
         applicationId "com.inapp_purchase_test"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode versionCodeDate()
+        versionCode calculateVersionCode()
         versionName "7.1" 
     }
 
     signingConfigs {
         release {
-            // keyAlias keystoreProperties['keyAlias']
-            // keyPassword keystoreProperties['keyPassword']
-            // storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-            // storePassword keystoreProperties['storePassword']
-
             storeFile file(keystoreProperties['storeFile'])
             storePassword keystoreProperties['storePassword']
             keyAlias keystoreProperties['keyAlias']

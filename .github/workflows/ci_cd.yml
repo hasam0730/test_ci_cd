@@ -5,11 +5,11 @@ name: Flutter CI
 on:
   push:
     branches: [ master, main ]
-  pull_request:
+  # pull_request:
     # branches: [ master, main ]
     # This ignores PR from any branches to master branch.
-    branches-ignore:
-      - 'master'
+    # branches-ignore:
+    #   - 'master'
       
     
 jobs:
