@@ -26,8 +26,10 @@ jobs:
       uses: act10ns/slack@v1.2.2
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with: 
-        status: starting
+      with:
+          status: ${{ job.status }}
+          steps: ${{ toJson(steps) }}
+          
 
 
     # - name: Slack Notify Build
