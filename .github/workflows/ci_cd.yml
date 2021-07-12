@@ -24,8 +24,10 @@ jobs:
 
     - name: slack - GitHub Actions Slack integration
       uses: act10ns/slack@v1.2.2
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+      with: 
+        status: starting
 
 
     # - name: Slack Notify Build
