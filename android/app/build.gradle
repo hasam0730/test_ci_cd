@@ -31,14 +31,10 @@ if (keystorePropertiesFile.exists()) {
     keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
-def getTimestamp() {
-    def date = new Date()
-    return date.format('yyyyMMdd.HHmm')
-}
-
-def versionCodeDate() {
+def versionCode() {
     Date date = new Date(); 
-    return date.format("yyyy").toInteger()+date.format("MM").toInteger()+date.format("dd").toInteger()+date.format("HH").toInteger()+date.format("mm").toInteger();
+    long value = date.getTime();
+    return "$value".toList().collect { it as Integer }.sum();
 }
 
 android {
