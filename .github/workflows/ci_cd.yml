@@ -28,8 +28,6 @@ jobs:
       uses: pullreminders/slack-action@master
       with:
         args: '{\"channel\":\"C0278LELCMV\",\"text\":\"<${{ github.event.pull_request.html_url }}|View Pull Request>\"'
-        status: STARTING
-        color: warning
 
 
     - name: Set up Flutter
