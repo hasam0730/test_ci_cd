@@ -32,6 +32,7 @@ if (keystorePropertiesFile.exists()) {
 }
 
 def calculateVersionCode() {
+    return 1;
     Date date = new Date(); 
     return (date.format("yyyy").toInteger()*100)+(date.format("MM").toInteger()*10)+(date.format("dd").toInteger())+date.format("HH").toInteger()*100+date.format("mm").toInteger()*10+date.format("ss").toInteger();
 }
