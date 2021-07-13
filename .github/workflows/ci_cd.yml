@@ -18,15 +18,15 @@ jobs:
     name: Code analysis and testing
     runs-on: ubuntu-latest
 
-    env:
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-    timeout-minutes: 30
+    # env:
+    #   SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    # timeout-minutes: 30
     steps:
-    - uses: act10ns/slack@v1      
-      with:
-        status: starting
-        # channel: '#workflows'
-      if: always()
+    # - uses: act10ns/slack@v1      
+    #   with:
+    #     status: starting
+    #     # channel: '#workflows'
+    #   if: always()
 
 
     # - name: Slack Notify Build
@@ -44,7 +44,7 @@ jobs:
         status: SUCCESS
         color: good
 
-        
+
     - name: Notify slack fail
       if: failure()
       env:
