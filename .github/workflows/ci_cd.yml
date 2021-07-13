@@ -17,29 +17,32 @@ jobs:
   code-analysis-and-testing:
     name: Code analysis and testing
     runs-on: ubuntu-latest
+    env:
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     timeout-minutes: 30
     steps:
+    - uses: act10ns/slack@v1      
+      with:
+        status: starting
+        # channel: '#workflows'
+      if: always()
+
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: slack - GitHub Actions Slack integration
-      uses: act10ns/slack@v1.2.2
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
-      with:
-          status: starting
-      if: always()
+    # - name: slack - GitHub Actions Slack integration
+    #   uses: act10ns/slack@v1.2.2
+    #   with:
+    #       status: starting
+    #   if: always()
+      
     - name: Checkout
       uses: actions/checkout@v2
     - name: Variables
       id: vars
       run: echo "::set-output name=SHORT_COMMIT_ID::$(git rev-parse --short HEAD)"
       
-    - uses: act10ns/slack@v1
-      with:
-        status: ${{ job.status }}
-        steps: ${{ toJson(steps) }}
-      if: always()
+    
 
 
     # - name: Slack Notify Build
@@ -99,3 +102,9 @@ jobs:
         userFraction: 0.33
         # whatsNewDirectory: distribution/whatsnew
         # mappingFile: app/build/outputs/mapping/release/mapping.txt
+
+    - uses: act10ns/slack@v1
+      with:
+        status: ${{ job.status }}
+        steps: ${{ toJson(steps) }}
+      if: always()
