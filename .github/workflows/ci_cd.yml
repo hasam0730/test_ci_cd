@@ -17,6 +17,7 @@ jobs:
   code-analysis-and-testing:
     name: Code analysis and testing
     runs-on: ubuntu-latest
+
     env:
       SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     timeout-minutes: 30
@@ -26,6 +27,23 @@ jobs:
         status: starting
         # channel: '#workflows'
       if: always()
+
+
+    # - name: Slack Notify Build
+
+      
+    - name: Notify slack success
+      if: success()
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+        uses: voxmedia/github-action-slack-notify-build@v1.1.2
+      with:
+    # Updates existing message from the first step
+        message_id: ${{ steps.slack.outputs.message_id }}
+        channel: app-alerts
+        status: SUCCESS
+        color: good
+
 
     - name: Checkout repository
       uses: actions/checkout@v2
@@ -103,8 +121,8 @@ jobs:
         # whatsNewDirectory: distribution/whatsnew
         # mappingFile: app/build/outputs/mapping/release/mapping.txt
 
-    - uses: act10ns/slack@v1
-      with:
-        status: ${{ job.status }}
-        steps: ${{ toJson(steps) }}
-      if: always()
+    # - uses: act10ns/slack@v1
+    #   with:
+    #     status: ${{ job.status }}
+    #     steps: ${{ toJson(steps) }}
+    #   if: always()
