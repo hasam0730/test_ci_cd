@@ -31,25 +31,7 @@ jobs:
 
     # - name: Slack Notify Build
 
-    - name: Notify slack success
-      if: success()
-      uses: voxmedia/github-action-slack-notify-build@v1
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-      with:
-        channel_id: C0278LELCMV
-        status: SUCCESS
-        color: good
-
-    - name: Notify slack fail
-      if: failure()
-      uses: voxmedia/github-action-slack-notify-build@v1
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
-      with:
-        channel_id: C0278LELCMV
-        status: STARTED
-        color: danger
+   
       
 
 
@@ -134,3 +116,23 @@ jobs:
     #     status: ${{ job.status }}
     #     steps: ${{ toJson(steps) }}
     #   if: always()
+
+    - name: Notify slack success
+      if: success()
+      uses: voxmedia/github-action-slack-notify-build@v1
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+      with:
+        channel_id: C0278LELCMV
+        status: SUCCESS
+        color: good
+
+    - name: Notify slack fail
+      if: failure()
+      uses: voxmedia/github-action-slack-notify-build@v1
+      env:
+        SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
+      with:
+        channel_id: C0278LELCMV
+        status: STARTED
+        color: danger
