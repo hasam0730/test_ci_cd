@@ -38,8 +38,8 @@ jobs:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_NOTIFICATIONS_BOT_TOKEN }}
       with:
         channel_id: C0278LELCMV
-      #   status: STARTED
-      #   color: good
+        status: STARTED
+        color: good
       
 
 
